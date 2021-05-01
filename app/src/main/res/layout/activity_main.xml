@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/app_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="150dp"
+        android:layout_marginBottom="150dp"
+        android:text="1 TO 50"
+        android:textSize="60sp" />
+
+    <Button
+        android:id="@+id/btn_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/app_name"
+        android:text="START"
+        android:textSize="30sp"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"/>
+
+    <Button
+        android:id="@+id/btn_rank"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/btn_start"
+        android:text="RANK"
+        android:textSize="30sp"
+        android:paddingLeft="38dp"
+        android:paddingRight="38dp"/>
+
+</RelativeLayout>
