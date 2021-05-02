@@ -2,17 +2,24 @@ package com.example.a1to50;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import org.w3c.dom.Text;
 
 import java.util.Random;
 
@@ -20,10 +27,13 @@ public class StartActivity extends AppCompatActivity {
     RelativeLayout[] btn = new RelativeLayout[25];
     TextView[] btn_text = new TextView[25];
     Button btn_back,btn_regame;
-    TextView time_text;
+    TextView time_text,new_record_text;
+    EditText nickname_text;
 
     private Thread timeThread = null;
     boolean isRunning = true;
+
+    View dialogView1,dialogView2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,7 +100,10 @@ public class StartActivity extends AppCompatActivity {
             btn[j].setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if (match_num_int == 50) {  //게임이 종료됬을때 이벤트 지정
+                    if (match_num_int == 1) {  //게임이 종료됬을때 이벤트 지정
+                        isRunning=!isRunning;
+
+                        new_record();
 
                     }
                     if (match_num_int == btn_num_01[j]) {
@@ -110,6 +123,7 @@ public class StartActivity extends AppCompatActivity {
         time_text=(TextView)findViewById(R.id.time_text);
         btn_back=(Button)findViewById(R.id.btn_back);
         btn_regame=(Button)findViewById(R.id.btn_regame);
+
 
         btn[0] = (RelativeLayout) findViewById(R.id.btn_page_1);
         btn[1] = (RelativeLayout) findViewById(R.id.btn_page_2);
@@ -212,7 +226,6 @@ public class StartActivity extends AppCompatActivity {
         @Override
         public void run() {
             int i = 0;
-
             while (true) {
                 while (isRunning) {
                     Message msg = new Message();
@@ -234,5 +247,11 @@ public class StartActivity extends AppCompatActivity {
                 }
             }
         }
+    }
+
+    private void new_record() {
+        Intent intent=new Intent(StartActivity.this,New_recordActivity.class);
+        intent.putExtra("time_text",time_text.getText().toString());
+        startActivity(intent);
     }
 }
