@@ -1,9 +1,16 @@
 package com.example.a1to50;
 
+import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
+import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,21 +19,43 @@ import java.util.Random;
 public class StartActivity extends AppCompatActivity {
     RelativeLayout[] btn = new RelativeLayout[25];
     TextView[] btn_text = new TextView[25];
+    Button btn_back,btn_regame;
+    TextView time_text;
+
+    private Thread timeThread = null;
+    boolean isRunning = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
         fv();   //findview 꼴보기싫으니 따로 만듬
+
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                startActivity(intent);
+            }
+        });
+        btn_regame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),StartActivity.class);
+                startActivity(intent);
+            }
+        });
+        timeThread = new Thread(new timeThread());
+        timeThread.start(); //스탑워치실행
         game(); //번호를 랜덤하게 집어넣는 역할
         btn_click();    //숫자클릭시 이벤트
     }
 
-    int number_group1, number_group2;
+    int num_page, page_num;
 
     private void game() {
-        for (number_group1 = 1; number_group1 <= 2; number_group1++) {
-            for (number_group2 = 1; number_group2 <= 25; number_group2++) {
+        for (num_page = 1; num_page <= 2; num_page++) {
+            for (page_num = 1; page_num <= 25; page_num++) {
                 random();
             }
         }
@@ -43,15 +72,15 @@ public class StartActivity extends AppCompatActivity {
     private void random() {
         Random random = new Random();
         random_btn_num_int = random.nextInt(25);
-        if (number_group1 == 1 && btn_num_01[random_btn_num_int] == 0) {
-            btn_num_01[random_btn_num_int] = number_group2;
-        } else if (number_group1 == 1 && number_group2 <= 25) {
-            random();   //1
+        if (num_page == 1 && btn_num_01[random_btn_num_int] == 0) {
+            btn_num_01[random_btn_num_int] = page_num;
+        } else if (num_page == 1 && page_num <= 25) {
+            random();   //숫자가 배열에 저장될때까지 랜덤함수 재실행
         }
-        if (number_group1 == 2 && btn_num_02[random_btn_num_int] == 0) {
-            btn_num_02[random_btn_num_int] = number_group2 + 25;
-        } else if (number_group1 == 2 && number_group2 <= 25) {
-            random();
+        if (num_page == 2 && btn_num_02[random_btn_num_int] == 0) {
+            btn_num_02[random_btn_num_int] = page_num + 25;
+        } else if (num_page == 2 && page_num <= 25) {
+            random();   //숫자가 배열에 저장될때까지 랜덤함수 재실행
         }
     }
 
@@ -65,11 +94,11 @@ public class StartActivity extends AppCompatActivity {
 
                     }
                     if (match_num_int == btn_num_01[j]) {
-                        match_num_int ++;
+                        match_num_int++;
                         btn_text[j].setText(Integer.toString(btn_num_02[j]));
                     }
                     if (match_num_int == btn_num_02[j]) {
-                        match_num_int ++;
+                        match_num_int++;
                         btn_text[j].setVisibility(View.GONE);
                     }
                 }
@@ -78,6 +107,10 @@ public class StartActivity extends AppCompatActivity {
     }
 
     private void fv() {
+        time_text=(TextView)findViewById(R.id.time_text);
+        btn_back=(Button)findViewById(R.id.btn_back);
+        btn_regame=(Button)findViewById(R.id.btn_regame);
+
         btn[0] = (RelativeLayout) findViewById(R.id.btn_page_1);
         btn[1] = (RelativeLayout) findViewById(R.id.btn_page_2);
         btn[2] = (RelativeLayout) findViewById(R.id.btn_page_3);
@@ -129,5 +162,77 @@ public class StartActivity extends AppCompatActivity {
         btn_text[22] = (TextView) findViewById(R.id.btn_23);
         btn_text[23] = (TextView) findViewById(R.id.btn_24);
         btn_text[24] = (TextView) findViewById(R.id.btn_25);
+    }
+
+    // 마지막으로 뒤로 가기 버튼을 눌렀던 시간 저장
+    private long backKeyPressedTime = 0;
+    // 첫 번째 뒤로 가기 버튼을 누를 때 표시
+    private Toast toast;
+
+    @Override
+    public void onBackPressed() {
+        //super.onBackPressed();
+        // 기존 뒤로 가기 버튼의 기능을 막기 위해 주석 처리 또는 삭제
+
+        // 마지막으로 뒤로 가기 버튼을 눌렀던 시간에 2.5초를 더해 현재 시간과 비교 후
+        // 마지막으로 뒤로 가기 버튼을 눌렀던 시간이 2.5초가 지났으면 Toast 출력
+        // 2500 milliseconds = 2.5 seconds
+        if (System.currentTimeMillis() > backKeyPressedTime + 2500) {
+            backKeyPressedTime = System.currentTimeMillis();
+            toast = Toast.makeText(this, "한 번 더 누르시면 메인화면으로 이동합니다.", Toast.LENGTH_LONG);
+            toast.show();
+            return;
+        }
+        // 마지막으로 뒤로 가기 버튼을 눌렀던 시간에 2.5초를 더해 현재 시간과 비교 후
+        // 마지막으로 뒤로 가기 버튼을 눌렀던 시간이 2.5초가 지나지 않았으면 종료
+        if (System.currentTimeMillis() <= backKeyPressedTime + 2500) {
+            finish();
+            toast.cancel();
+
+            Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+            intent.addCategory(Intent.CATEGORY_HOME);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+        }
+    }
+    @SuppressLint("HandlerLeak")
+    Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            int mSec = msg.arg1 % 100;
+            int sec = (msg.arg1 / 100) % 60;
+            int min = (msg.arg1 / 100) / 60;
+            //1000이 1초 1000*60 은 1분 1000*60*10은 10분 1000*60*60은 한시간
+            @SuppressLint("DefaultLocale")
+            String result = String.format("%02d:%02d:%02d", min, sec, mSec);
+            time_text.setText(result);
+        }
+    };
+    public class timeThread implements Runnable {
+        @Override
+        public void run() {
+            int i = 0;
+
+            while (true) {
+                while (isRunning) {
+                    Message msg = new Message();
+                    msg.arg1 = i++;
+                    handler.sendMessage(msg);
+                    try {
+                        Thread.sleep(10);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                        runOnUiThread(new Runnable(){
+                            @Override
+                            public void run() {
+                                time_text.setText("");
+                                time_text.setText("00:00:00");
+                            }
+                        });
+                        return; // 인터럽트 받을 경우 return
+                    }
+                }
+            }
+        }
     }
 }
