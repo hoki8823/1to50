@@ -6,6 +6,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -39,6 +40,8 @@ public class StartActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
+
+
         fv();   //findview 꼴보기싫으니 따로 만듬
 
         btn_back.setOnClickListener(new View.OnClickListener() {
@@ -100,7 +103,7 @@ public class StartActivity extends AppCompatActivity {
             btn[j].setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if (match_num_int == 1) {  //게임이 종료됬을때 이벤트 지정
+                    if (match_num_int == 2) {  //게임이 종료됬을때 이벤트 지정
                         isRunning=!isRunning;
 
                         new_record();
