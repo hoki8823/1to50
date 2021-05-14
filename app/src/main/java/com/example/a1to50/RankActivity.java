@@ -1,15 +1,9 @@
 package com.example.a1to50;
 
-import android.app.Activity;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -18,10 +12,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class RankActivity extends AppCompatActivity {
+    Context context;
 
-    private RecyclerView rv;
-    private ArrayList<Rank_Item> rankItemList= new ArrayList<>();
-    RecyclerView.Adapter rvAdapter;
+    SQLiteDatabase db;
+    DBHelper dbHelper;
+
+    private RecyclerView recyclerView;
+    private ArrayList<Rank_Item> rankItemList = new ArrayList<>();
+    RecyclerView.Adapter rankAdapter;
     RecyclerView.LayoutManager layoutManager;
 
     @Override
@@ -29,13 +27,47 @@ public class RankActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rank);
 
-        rv = (RecyclerView)findViewById(R.id.rank_recycler);
-        rv.setHasFixedSize(true);
 
-        layoutManager=new LinearLayoutManager(this);
-        rv.setLayoutManager(layoutManager);
+        context = this.getBaseContext();
 
-        rvAdapter = new RankAdapter(rankItemList, this); // Adapter 생성
-        rv.setAdapter(rvAdapter);
+        recyclerView = (RecyclerView)findViewById(R.id.rank_recycler);
+        recyclerView.setHasFixedSize(true);
+
+        rankItemList.clear();
+        dbHelper = new DBHelper(this);
+        db = dbHelper.getReadableDatabase();
+        db.beginTransaction();
+
+        Cursor cursor = dbHelper.loadRank();
+        try{
+            int i = 1;
+            cursor.moveToFirst();
+            while (!cursor.isAfterLast()) {
+                addGroupItem(i++,cursor.getString(1),cursor.getString(2));
+                cursor.moveToNext();
+            }
+            db.setTransactionSuccessful();
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            if(cursor!=null) {
+                cursor.close();
+                db.endTransaction();
+            }
+        }
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        recyclerView.setLayoutManager(layoutManager);
+
+        rankAdapter = new RankAdapter(rankItemList, this); // Adapter 생성
+        recyclerView.setAdapter(rankAdapter); // 어댑터를 리스트뷰에 세팅
+    }
+    public void addGroupItem(int i,String nick, String time){
+        Rank_Item item = new Rank_Item();
+        item.setId(i);
+        item.setNick(nick);
+        item.setRecord(time);
+        rankItemList.add(item);
     }
 }

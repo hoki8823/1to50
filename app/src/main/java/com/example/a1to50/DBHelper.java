@@ -46,8 +46,7 @@ public class DBHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    void addRank(String nick, String time)
-    {
+    void addRank(String nick, String time) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
 
@@ -56,11 +55,27 @@ public class DBHelper extends SQLiteOpenHelper {
         long result = db.insert(TABLE_NAME, null, cv);
         if (result == -1)
         {
-            Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "기록 등록 실패", Toast.LENGTH_SHORT).show();
         }
         else
         {
-            Toast.makeText(context, "데이터 추가 성공", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "기록 등록 성공", Toast.LENGTH_SHORT).show();
         }
+    }
+    public Cursor loadRank() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        db.beginTransaction();
+        // Select All Query
+        String selectQuery = "SELECT _id,nick,time FROM " + TABLE_NAME + " order by time asc";
+        Cursor cursor = null;
+        try {
+            cursor = db.rawQuery(selectQuery, null);
+            db.setTransactionSuccessful();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            db.endTransaction();
+        }
+        return cursor;
     }
 }

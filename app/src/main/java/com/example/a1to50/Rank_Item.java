@@ -5,15 +5,16 @@ public class Rank_Item {
     private String nick;
     private String record;
 
+    public Rank_Item() {
+    }
+
     public Rank_Item(int id, String nick, String record) {
         this.id = id;
         this.nick = nick;
         this.record = record;
     }
 
-    public int getId() {
-        return id;
-    }
+    public int getId() { return id; }
 
     public void setId(int id) {
         this.id = id;

@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         // 2500 milliseconds = 2.5 seconds
         if (System.currentTimeMillis() > backKeyPressedTime + 2500) {
             backKeyPressedTime = System.currentTimeMillis();
-            toast = Toast.makeText(this, "한 번 더 누르시면 메인화면으로 이동합니다.", Toast.LENGTH_LONG);
+            toast = Toast.makeText(this, "한 번 더 누르시면 어플을 종료합니다.", Toast.LENGTH_LONG);
             toast.show();
             return;
         }
