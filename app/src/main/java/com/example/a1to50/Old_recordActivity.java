@@ -1,7 +1,7 @@
 package com.example.a1to50;
 
-import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -12,38 +12,49 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class New_recordActivity extends AppCompatActivity {
+import java.util.ArrayList;
 
-    TextView new_record_text;
+public class Old_recordActivity extends AppCompatActivity {
+    SQLiteDatabase db;
+    DBHelper dbHelper;
+    TextView new_record_text,old_record_text;
     EditText nickname_text;
-    Button btn_ok, btn_no;
+    Button btn_ok;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.new_record_dialog);
+        setContentView(R.layout.old_record_dialog);
 
         Intent intent = getIntent();
         String time_text = intent.getStringExtra("time_text");
 
         new_record_text = (TextView) findViewById(R.id.new_record_text);
+        old_record_text = (TextView) findViewById(R.id.old_record_text);
         nickname_text = (EditText) findViewById(R.id.nickname_text);
         btn_ok = (Button) findViewById(R.id.btn_ok);
-        btn_no = (Button) findViewById(R.id.btn_no);
-        new_record_text.setText(time_text);
+        old_record_text.setText(time_text);
 
 
+        dbHelper = new DBHelper(this);
+        db = dbHelper.getReadableDatabase();
+        db.beginTransaction();
+
+        Cursor cursor = dbHelper.loadRank();
+        try{
+            cursor.moveToFirst();
+            new_record_text.setText(cursor.getString(2));
+            db.setTransactionSuccessful();
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            if(cursor!=null) {
+                cursor.close();
+                db.endTransaction();
+            }
+        }
 
         btn_ok.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                DBHelper mydb = new DBHelper(New_recordActivity.this);
-                mydb.addRank(nickname_text.getText().toString(),new_record_text.getText().toString());
-
-                finish();
-            }
-        });
-        btn_no.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();

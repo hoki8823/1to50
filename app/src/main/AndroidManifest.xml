@@ -18,6 +18,7 @@
         <activity android:name=".StartActivity"/>
         <activity android:name=".RankActivity"/>
         <activity android:name=".New_recordActivity" android:theme="@style/popupTheme" android:screenOrientation="portrait"/>
+        <activity android:name=".Old_recordActivity" android:theme="@style/popupTheme" android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

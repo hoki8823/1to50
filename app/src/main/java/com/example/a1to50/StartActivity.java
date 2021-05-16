@@ -6,6 +6,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Handler;
@@ -22,20 +23,20 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import org.w3c.dom.Text;
 
+import java.text.SimpleDateFormat;
 import java.util.Random;
 
 public class StartActivity extends AppCompatActivity {
     RelativeLayout[] btn = new RelativeLayout[25];
     TextView[] btn_text = new TextView[25];
     Button btn_back,btn_regame;
-    TextView time_text,new_record_text;
-    EditText nickname_text;
+    TextView time_text;
 
     private Thread timeThread = null;
     boolean isRunning = true;
 
-    View dialogView1,dialogView2;
-
+    SQLiteDatabase db;
+    DBHelper dbHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -106,7 +107,7 @@ public class StartActivity extends AppCompatActivity {
                     if (match_num_int == 2) {  //게임이 종료됬을때 이벤트 지정
                         isRunning=!isRunning;
 
-                        new_record();
+                        wow_record();
 
                     }
                     if (match_num_int == btn_num_01[j]) {
@@ -252,9 +253,35 @@ public class StartActivity extends AppCompatActivity {
         }
     }
 
-    private void new_record() {
-        Intent intent=new Intent(StartActivity.this,New_recordActivity.class);
-        intent.putExtra("time_text",time_text.getText().toString());
-        startActivity(intent);
+    private void wow_record() {
+
+        dbHelper = new DBHelper(this);
+        db = dbHelper.getReadableDatabase();
+        db.beginTransaction();
+
+        Cursor cursor = dbHelper.loadRank();
+        try{
+            cursor.moveToFirst();
+            int a = Integer.parseInt(cursor.getString(2).replace(":",""));
+            int b = Integer.parseInt(time_text.getText().toString().replace(":",""));
+            if( a > b){
+                Intent intent=new Intent(StartActivity.this,New_recordActivity.class);
+                intent.putExtra("time_text",time_text.getText().toString());
+                startActivity(intent);
+            }
+            else {
+                Intent intent=new Intent(StartActivity.this,Old_recordActivity.class);
+                intent.putExtra("time_text",time_text.getText().toString());
+                startActivity(intent);
+            }
+            db.setTransactionSuccessful();
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            if(cursor!=null) {
+                cursor.close();
+                db.endTransaction();
+            }
+        }
     }
 }
