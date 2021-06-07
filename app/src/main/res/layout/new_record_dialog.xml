@@ -2,6 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/edge"
+    android:padding="10dp"
     android:orientation="vertical">
     <RelativeLayout
         android:layout_width="match_parent"
@@ -13,6 +15,7 @@
             android:layout_centerHorizontal="true"
             android:text="최고기록!"
             android:textSize="40sp"
+            android:textColor="#000000"
             android:textStyle="bold"/>
         <TextView
             android:id="@+id/new_record_text"
@@ -21,13 +24,17 @@
             android:layout_centerHorizontal="true"
             android:layout_below="@id/max"
             android:text="00:00:00"
+            android:textColor="#000000"
             android:textSize="50sp"
             android:textStyle="bold" />
         <EditText
+            android:layout_margin="15dp"
+            android:padding="15dp"
             android:id="@+id/nickname_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/new_record_text"
+            android:background="@drawable/edge"
             android:hint="Nickname"/>
     </RelativeLayout>
     <RelativeLayout
@@ -38,17 +45,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingTop="30dp">
+            android:paddingTop="10dp">
             <Button
                 android:id="@+id/btn_ok"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="확인"
+                android:background="@drawable/edge"
+                android:textColor="#000000"
+                android:textStyle="bold"
                 android:layout_marginRight="20dp"/>
             <Button
                 android:id="@+id/btn_no"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/edge"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                android:layout_marginBottom="15dp"
                 android:text="취소"/>
         </LinearLayout>
     </RelativeLayout>

@@ -18,6 +18,7 @@
             android:layout_centerVertical="true"
             android:paddingLeft="15dp"
             android:text="00:00:00"
+            android:textColor="#000000"
             android:textSize="65sp" />
 
         <LinearLayout
@@ -30,19 +31,27 @@
                 android:id="@+id/btn_back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/edge"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                android:layout_marginBottom="10dp"
                 android:text="돌아가기" />
 
             <Button
                 android:id="@+id/btn_regame"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/edge"
+                android:layout_marginBottom="10dp"
+                android:textColor="#000000"
+                android:textStyle="bold"
                 android:text="다시하기" />
         </LinearLayout>
     </RelativeLayout>
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="3dp"
+        android:layout_height="5dp"
         android:background="#000000"
         android:layout_marginBottom="50dp"/>
 
@@ -57,7 +66,7 @@
             android:layout_width="65dp"
             android:layout_height="65dp"
             android:layout_margin="5dp"
-            android:background="#fff000"
+            android:background="@drawable/edge"
             android:gravity="center_horizontal">
 
             <TextView
@@ -66,6 +75,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:text="1"
+                android:textColor="#000000"
                 android:textSize="40sp"
                 android:textStyle="bold" />
         </RelativeLayout>
@@ -75,7 +85,7 @@
             android:layout_width="65dp"
             android:layout_height="65dp"
             android:layout_margin="5dp"
-            android:background="#fff000"
+            android:background="@drawable/edge"
             android:gravity="center_horizontal">
 
             <TextView
@@ -84,6 +94,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:text="2"
+                android:textColor="#000000"
                 android:textSize="40sp"
                 android:textStyle="bold" />
         </RelativeLayout>
@@ -93,7 +104,7 @@
             android:layout_width="65dp"
             android:layout_height="65dp"
             android:layout_margin="5dp"
-            android:background="#fff000"
+            android:background="@drawable/edge"
             android:gravity="center_horizontal">
 
             <TextView
@@ -102,6 +113,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:text="3"
+                android:textColor="#000000"
                 android:textSize="40sp"
                 android:textStyle="bold" />
         </RelativeLayout>
@@ -111,7 +123,7 @@
             android:layout_width="65dp"
             android:layout_height="65dp"
             android:layout_margin="5dp"
-            android:background="#fff000"
+            android:background="@drawable/edge"
             android:gravity="center_horizontal">
 
             <TextView
@@ -120,6 +132,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:text="4"
+                android:textColor="#000000"
                 android:textSize="40sp"
                 android:textStyle="bold" />
         </RelativeLayout>
@@ -129,7 +142,7 @@
             android:layout_width="65dp"
             android:layout_height="65dp"
             android:layout_margin="5dp"
-            android:background="#fff000"
+            android:background="@drawable/edge"
             android:gravity="center_horizontal">
 
             <TextView
@@ -138,6 +151,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:text="5"
+                android:textColor="#000000"
                 android:textSize="40sp"
                 android:textStyle="bold" />
         </RelativeLayout>
@@ -153,7 +167,7 @@
             android:layout_width="65dp"
             android:layout_height="65dp"
             android:layout_margin="5dp"
-            android:background="#fff000"
+            android:background="@drawable/edge"
             android:gravity="center_horizontal">
 
             <TextView
@@ -162,6 +176,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:text="6"
+                android:textColor="#000000"
                 android:textSize="40sp"
                 android:textStyle="bold" />
         </RelativeLayout>
@@ -171,7 +186,7 @@
             android:layout_width="65dp"
             android:layout_height="65dp"
             android:layout_margin="5dp"
-            android:background="#fff000"
+            android:background="@drawable/edge"
             android:gravity="center_horizontal">
 
             <TextView
@@ -180,6 +195,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:text="7"
+                android:textColor="#000000"
                 android:textSize="40sp"
                 android:textStyle="bold" />
         </RelativeLayout>
@@ -189,7 +205,7 @@
             android:layout_width="65dp"
             android:layout_height="65dp"
             android:layout_margin="5dp"
-            android:background="#fff000"
+            android:background="@drawable/edge"
             android:gravity="center_horizontal">
 
             <TextView
@@ -198,6 +214,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:text="8"
+                android:textColor="#000000"
                 android:textSize="40sp"
                 android:textStyle="bold" />
         </RelativeLayout>
@@ -207,7 +224,7 @@
             android:layout_width="65dp"
             android:layout_height="65dp"
             android:layout_margin="5dp"
-            android:background="#fff000"
+            android:background="@drawable/edge"
             android:gravity="center_horizontal">
 
             <TextView
@@ -216,6 +233,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:text="9"
+                android:textColor="#000000"
                 android:textSize="40sp"
                 android:textStyle="bold" />
         </RelativeLayout>
@@ -225,7 +243,7 @@
             android:layout_width="65dp"
             android:layout_height="65dp"
             android:layout_margin="5dp"
-            android:background="#fff000"
+            android:background="@drawable/edge"
             android:gravity="center_horizontal">
 
             <TextView
@@ -234,6 +252,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:text="10"
+                android:textColor="#000000"
                 android:textSize="40sp"
                 android:textStyle="bold" />
         </RelativeLayout>
@@ -249,7 +268,7 @@
             android:layout_width="65dp"
             android:layout_height="65dp"
             android:layout_margin="5dp"
-            android:background="#fff000"
+            android:background="@drawable/edge"
             android:gravity="center_horizontal">
 
             <TextView
@@ -258,6 +277,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:text="11"
+                android:textColor="#000000"
                 android:textSize="40sp"
                 android:textStyle="bold" />
         </RelativeLayout>
@@ -267,7 +287,7 @@
             android:layout_width="65dp"
             android:layout_height="65dp"
             android:layout_margin="5dp"
-            android:background="#fff000"
+            android:background="@drawable/edge"
             android:gravity="center_horizontal">
 
             <TextView
@@ -276,6 +296,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:text="12"
+                android:textColor="#000000"
                 android:textSize="40sp"
                 android:textStyle="bold" />
         </RelativeLayout>
@@ -285,7 +306,7 @@
             android:layout_width="65dp"
             android:layout_height="65dp"
             android:layout_margin="5dp"
-            android:background="#fff000"
+            android:background="@drawable/edge"
             android:gravity="center_horizontal">
 
             <TextView
@@ -294,6 +315,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:text="13"
+                android:textColor="#000000"
                 android:textSize="40sp"
                 android:textStyle="bold" />
         </RelativeLayout>
@@ -303,7 +325,7 @@
             android:layout_width="65dp"
             android:layout_height="65dp"
             android:layout_margin="5dp"
-            android:background="#fff000"
+            android:background="@drawable/edge"
             android:gravity="center_horizontal">
 
             <TextView
@@ -312,6 +334,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:text="14"
+                android:textColor="#000000"
                 android:textSize="40sp"
                 android:textStyle="bold" />
         </RelativeLayout>
@@ -321,7 +344,7 @@
             android:layout_width="65dp"
             android:layout_height="65dp"
             android:layout_margin="5dp"
-            android:background="#fff000"
+            android:background="@drawable/edge"
             android:gravity="center_horizontal">
 
             <TextView
@@ -330,6 +353,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:text="15"
+                android:textColor="#000000"
                 android:textSize="40sp"
                 android:textStyle="bold" />
         </RelativeLayout>
@@ -345,7 +369,7 @@
             android:layout_width="65dp"
             android:layout_height="65dp"
             android:layout_margin="5dp"
-            android:background="#fff000"
+            android:background="@drawable/edge"
             android:gravity="center_horizontal">
 
             <TextView
@@ -354,6 +378,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:text="16"
+                android:textColor="#000000"
                 android:textSize="40sp"
                 android:textStyle="bold" />
         </RelativeLayout>
@@ -363,7 +388,7 @@
             android:layout_width="65dp"
             android:layout_height="65dp"
             android:layout_margin="5dp"
-            android:background="#fff000"
+            android:background="@drawable/edge"
             android:gravity="center_horizontal">
 
             <TextView
@@ -372,6 +397,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:text="17"
+                android:textColor="#000000"
                 android:textSize="40sp"
                 android:textStyle="bold" />
         </RelativeLayout>
@@ -381,7 +407,7 @@
             android:layout_width="65dp"
             android:layout_height="65dp"
             android:layout_margin="5dp"
-            android:background="#fff000"
+            android:background="@drawable/edge"
             android:gravity="center_horizontal">
 
             <TextView
@@ -390,6 +416,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:text="18"
+                android:textColor="#000000"
                 android:textSize="40sp"
                 android:textStyle="bold" />
         </RelativeLayout>
@@ -399,7 +426,7 @@
             android:layout_width="65dp"
             android:layout_height="65dp"
             android:layout_margin="5dp"
-            android:background="#fff000"
+            android:background="@drawable/edge"
             android:gravity="center_horizontal">
 
             <TextView
@@ -408,6 +435,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:text="19"
+                android:textColor="#000000"
                 android:textSize="40sp"
                 android:textStyle="bold" />
         </RelativeLayout>
@@ -417,7 +445,7 @@
             android:layout_width="65dp"
             android:layout_height="65dp"
             android:layout_margin="5dp"
-            android:background="#fff000"
+            android:background="@drawable/edge"
             android:gravity="center_horizontal">
 
             <TextView
@@ -426,6 +454,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:text="20"
+                android:textColor="#000000"
                 android:textSize="40sp"
                 android:textStyle="bold" />
         </RelativeLayout>
@@ -441,7 +470,7 @@
             android:layout_width="65dp"
             android:layout_height="65dp"
             android:layout_margin="5dp"
-            android:background="#fff000"
+            android:background="@drawable/edge"
             android:gravity="center_horizontal">
 
             <TextView
@@ -450,6 +479,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:text="21"
+                android:textColor="#000000"
                 android:textSize="40sp"
                 android:textStyle="bold" />
         </RelativeLayout>
@@ -459,7 +489,7 @@
             android:layout_width="65dp"
             android:layout_height="65dp"
             android:layout_margin="5dp"
-            android:background="#fff000"
+            android:background="@drawable/edge"
             android:gravity="center_horizontal">
 
             <TextView
@@ -468,6 +498,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:text="22"
+                android:textColor="#000000"
                 android:textSize="40sp"
                 android:textStyle="bold" />
         </RelativeLayout>
@@ -477,7 +508,7 @@
             android:layout_width="65dp"
             android:layout_height="65dp"
             android:layout_margin="5dp"
-            android:background="#fff000"
+            android:background="@drawable/edge"
             android:gravity="center_horizontal">
 
             <TextView
@@ -486,6 +517,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:text="23"
+                android:textColor="#000000"
                 android:textSize="40sp"
                 android:textStyle="bold" />
         </RelativeLayout>
@@ -495,7 +527,7 @@
             android:layout_width="65dp"
             android:layout_height="65dp"
             android:layout_margin="5dp"
-            android:background="#fff000"
+            android:background="@drawable/edge"
             android:gravity="center_horizontal">
 
             <TextView
@@ -504,6 +536,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:text="24"
+                android:textColor="#000000"
                 android:textSize="40sp"
                 android:textStyle="bold" />
         </RelativeLayout>
@@ -513,7 +546,7 @@
             android:layout_width="65dp"
             android:layout_height="65dp"
             android:layout_margin="5dp"
-            android:background="#fff000"
+            android:background="@drawable/edge"
             android:gravity="center_horizontal">
 
             <TextView
@@ -522,6 +555,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:text="25"
+                android:textColor="#000000"
                 android:textSize="40sp"
                 android:textStyle="bold" />
         </RelativeLayout>

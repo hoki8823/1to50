@@ -2,7 +2,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/edge"
+    android:paddingTop="50dp"
+    android:paddingBottom="20dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -19,6 +22,7 @@
                 android:layout_height="wrap_content"
                 android:text="최고기록 : "
                 android:textSize="30sp"
+                android:textColor="#000000"
                 android:textStyle="bold" />
 
             <TextView
@@ -27,6 +31,7 @@
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/max"
                 android:text="00:00:00"
+                android:textColor="#000000"
                 android:textSize="30sp"
                 android:textStyle="bold" />
 
@@ -37,6 +42,7 @@
                 android:layout_below="@id/max"
                 android:layout_centerHorizontal="true"
                 android:text="00:00:00"
+                android:textColor="#000000"
                 android:textSize="30sp"
                 android:textStyle="bold" />
         </RelativeLayout>
@@ -53,6 +59,9 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_marginRight="20dp"
+            android:background="@drawable/edge"
+            android:textColor="#000000"
+            android:textStyle="bold"
             android:text="확인" />
     </RelativeLayout>
 </LinearLayout>

@@ -14,6 +14,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="1."
+            android:textColor="#000000"
             android:textSize="50sp"
             android:textStyle="bold" />
 
@@ -26,6 +27,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:text="nickname"
+                android:textColor="#000000"
                 android:textSize="25sp" />
 
             <TextView
@@ -35,11 +37,12 @@
                 android:layout_below="@id/nickname_text"
                 android:layout_centerHorizontal="true"
                 android:text="00:00:00"
+                android:textColor="#000000"
                 android:textSize="25sp" />
         </RelativeLayout>
     </RelativeLayout>
     <View
         android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="#ABABAB" />
+        android:layout_height="5dp"
+        android:background="#000000" />
 </LinearLayout>

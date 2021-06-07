@@ -11,6 +11,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -104,7 +105,7 @@ public class StartActivity extends AppCompatActivity {
             btn[j].setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if (match_num_int == 2) {  //게임이 종료됬을때 이벤트 지정
+                    if (match_num_int == 50) {  //게임이 종료됬을때 이벤트 지정
                         isRunning=!isRunning;
 
                         wow_record();
@@ -259,12 +260,15 @@ public class StartActivity extends AppCompatActivity {
         db = dbHelper.getReadableDatabase();
         db.beginTransaction();
 
+
         Cursor cursor = dbHelper.loadRank();
         try{
             cursor.moveToFirst();
+
             int a = Integer.parseInt(cursor.getString(2).replace(":",""));
             int b = Integer.parseInt(time_text.getText().toString().replace(":",""));
-            if( a > b){
+
+            if( a > b ||String.valueOf(a)==null){
                 Intent intent=new Intent(StartActivity.this,New_recordActivity.class);
                 intent.putExtra("time_text",time_text.getText().toString());
                 startActivity(intent);
@@ -283,5 +287,6 @@ public class StartActivity extends AppCompatActivity {
                 db.endTransaction();
             }
         }
+
     }
 }

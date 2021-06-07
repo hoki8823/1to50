@@ -11,6 +11,7 @@
         android:layout_marginTop="150dp"
         android:layout_marginBottom="150dp"
         android:text="1 TO 50"
+        android:textColor="#000000"
         android:textSize="60sp" />
 
     <Button
@@ -20,7 +21,9 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@id/app_name"
         android:text="START"
+        android:background="@drawable/edge"
         android:textSize="30sp"
+        android:layout_marginBottom="10dp"
         android:paddingLeft="30dp"
         android:paddingRight="30dp"/>
 
@@ -32,6 +35,7 @@
         android:layout_below="@id/btn_start"
         android:text="RANK"
         android:textSize="30sp"
+        android:background="@drawable/edge"
         android:paddingLeft="38dp"
         android:paddingRight="38dp"/>
 
