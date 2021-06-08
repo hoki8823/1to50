@@ -105,11 +105,9 @@ public class StartActivity extends AppCompatActivity {
             btn[j].setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if (match_num_int == 50) {  //게임이 종료됬을때 이벤트 지정
+                    if (match_num_int == 3) {  //게임이 종료됬을때 이벤트 지정
                         isRunning=!isRunning;
-
                         wow_record();
-
                     }
                     if (match_num_int == btn_num_01[j]) {
                         match_num_int++;
@@ -259,22 +257,26 @@ public class StartActivity extends AppCompatActivity {
         dbHelper = new DBHelper(this);
         db = dbHelper.getReadableDatabase();
         db.beginTransaction();
-
-
         Cursor cursor = dbHelper.loadRank();
+        Cursor cursor1 = dbHelper.loadRank1();
         try{
             cursor.moveToFirst();
+            cursor1.moveToFirst();
 
-            int a = Integer.parseInt(cursor.getString(2).replace(":",""));
-            int b = Integer.parseInt(time_text.getText().toString().replace(":",""));
-
-            if( a > b ||String.valueOf(a)==null){
+            if(cursor1.getInt(0) > 0){
+                int a = Integer.parseInt(cursor.getString(2).replace(":",""));
+                int b = Integer.parseInt(time_text.getText().toString().replace(":",""));
+                if( a > b ){
+                    Intent intent=new Intent(StartActivity.this,New_recordActivity.class);
+                    intent.putExtra("time_text",time_text.getText().toString());
+                    startActivity(intent);
+                }else {
+                    Intent intent=new Intent(StartActivity.this,Old_recordActivity.class);
+                    intent.putExtra("time_text",time_text.getText().toString());
+                    startActivity(intent);
+                }
+            }else{
                 Intent intent=new Intent(StartActivity.this,New_recordActivity.class);
-                intent.putExtra("time_text",time_text.getText().toString());
-                startActivity(intent);
-            }
-            else {
-                Intent intent=new Intent(StartActivity.this,Old_recordActivity.class);
                 intent.putExtra("time_text",time_text.getText().toString());
                 startActivity(intent);
             }

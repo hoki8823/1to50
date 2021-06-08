@@ -78,4 +78,25 @@ public class DBHelper extends SQLiteOpenHelper {
         }
         return cursor;
     }
+
+    public Cursor loadRank1() {
+
+        int a = 0;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        db.beginTransaction();
+        // Select All Query
+        String selectQuery = "SELECT count(*) FROM " + TABLE_NAME ;
+        Cursor cursor = null;
+        try {
+            cursor = db.rawQuery(selectQuery, null);
+            db.setTransactionSuccessful();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            db.endTransaction();
+        }
+
+        return cursor;
+    }
 }
